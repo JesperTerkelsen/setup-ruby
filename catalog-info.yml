@@ -1,0 +1,16 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: setup-ruby
+  description: |
+    This action downloads a prebuilt ruby and adds it to the PATH
+  annotations:
+    github.com/project-slug: Tradeshift/setup-ruby
+  tags:
+    - github-action
+    - nodejs
+    - fork
+spec:
+  type: library
+  owner: developer-productivity
+  lifecycle: production
