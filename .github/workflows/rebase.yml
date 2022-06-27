@@ -7,14 +7,14 @@ on:
 
 jobs:
   sync:
-
     runs-on: ubuntu-latest
-
     steps:
-      - uses: tradeshift/fork-sync@v1.6.3
-        with:
-          token: ${{ secrets.GH_TOKEN }}
-          owner: ruby
-          base: master
-          head: master
-          merge_method: rebase
+    - uses: actions/checkout@master
+      with:
+        fetch-depth: 0 # fetching all history so i can rebase
+        token: ${{ secrets.GH_TOKEN }}
+    - name: Configure git for tradeshiftci
+      uses: tradeshift/actions-git/configure-from-gpg-key@v1
+      with:
+        gpg-key: ${{ secrets.TRADESHIFTCI_GPG_KEY }}  
+    - uses: tradeshift/rebase-upstream-action@master
